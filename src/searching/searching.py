@@ -9,6 +9,9 @@ def linear_search(arr, target):
             return i 
     return -1   # not found
 
+#initial state for binary search
+# data = [-9, -8, -6, -4, -3, -2, 0, 1, 2, 3, 5, 7, 8, 9]
+# target = 10
 
 # Write an iterative implementation of Binary Search
 def binary_search(arr, target):
@@ -27,10 +30,40 @@ def binary_search(arr, target):
             return mid
         # if target is less than middle value 
         elif target < arr[mid]:
-            #set index of high to index of middle - 1
+            # make high index one less than middle index
+            # to cut top half out at middle index
             high = mid - 1
         # if neither
         else:
-            #set index of low to index of middle + 1
+           # make low index one greater than middle index
+            # to cut bottom half out at middle index           
             low = mid + 1
     return -1  # not found
+"""
+INDEXES:
+target = -8     |target = 10
+
+ 0 low          | 0 low
+ 6 mid          | 6 mid
+ 13 high        | 13 high
+less than       |greater
+                |
+ 0 low          | 7 low
+ 2 mid          | 10 mid
+ 5 high         | 13 high
+less than       |greater
+                |
+ 0 low          | 11 low
+ 0 mid          | 12 mid
+ 1 high         | 13 high
+greater         |greater
+                |
+ 1 low          | 13 low
+ 1 mid          | 13 mid
+ 1 high         | 13 high
+equals          |greater
+
+returns 1       returns -1
+# index of -8   #false index
+"""
+print(binary_search(data, target))
