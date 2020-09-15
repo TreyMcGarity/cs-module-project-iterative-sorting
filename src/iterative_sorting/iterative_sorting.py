@@ -16,13 +16,15 @@ def selection_sort(arr):
 
         # TO-DO: swap
         # Your code here
-
+        arr[cur_index], arr[smallest_index] = arr[smallest_index], arr[cur_index]
+        """
+        Using Temporary Var:
         #save current value
         temp = arr[cur_index]
         #switch current and mininmum values
         arr[cur_index] = arr[smallest_index]
         arr[smallest_index] = temp
-
+        """
     return arr
 
 
@@ -37,12 +39,15 @@ def bubble_sort(arr):
         for j in range(0, length-1): 
             # if the value is greater than right value
             if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+                """
+                Using Temporary Var:
                 #save current value
                 temp = arr[j]
                 # switch current and right of current
                 arr[j] = arr[j+1]
                 arr[j+1] = temp
-
+                """
     return arr
 
 '''
@@ -65,4 +70,31 @@ What is the time and space complexity of the counting sort algorithm?
 def counting_sort(arr, maximum=None):
     # Your code here
 
-    return arr
+    #if length is zero
+    if len(arr) == 0:
+        # throw back empty input
+        return arr
+    #if no max
+    if maximum is None:
+        #set max
+        maximum = max(arr)
+    buckets = [0 for i in range(maximum+1)]
+
+    #loop through our arr
+    for value in arr:
+        #if a negative number is found
+        if value < 0:
+            # throw error
+            return "Error, negative numbers not allowed in Count Sort"
+        # for each distinct arr value, increment arr[value] by 1
+        buckets[value] += 1
+        # buckets holds array of counts of every distinct value in input array
+
+    output = []
+    # loop through our buckets array
+    for index, bucket in enumerate(buckets):
+        # for the current count
+        output.extend([index for i in range(bucket)])
+        # add that many values to an output array
+
+    return output
