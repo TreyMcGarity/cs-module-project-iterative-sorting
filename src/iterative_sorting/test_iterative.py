@@ -37,6 +37,5 @@ class IterativeSortingTest(unittest.TestCase):
         self.assertEqual(counting_sort(arr3), "Error, negative numbers not allowed in Count Sort")
         self.assertEqual(counting_sort(arr4), sorted(arr4))
 
-
 if __name__ == '__main__':
     unittest.main()
