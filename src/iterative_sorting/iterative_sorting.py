@@ -8,9 +8,20 @@ def selection_sort(arr):
         # (hint, can do in 3 loc)
         # Your code here
 
+        for j in range(cur_index, len(arr)):
+            #if value is smaller than minimum value
+            if arr[j] < arr[smallest_index]:
+                #set value to new minimum
+                smallest_index = j
 
         # TO-DO: swap
         # Your code here
+
+        #save current value
+        temp = arr[cur_index]
+        #switch current and mininmum values
+        arr[cur_index] = arr[smallest_index]
+        arr[smallest_index] = temp
 
     return arr
 
@@ -18,7 +29,19 @@ def selection_sort(arr):
 # TO-DO:  implement the Bubble Sort function below
 def bubble_sort(arr):
     # Your code here
-
+    length = len(arr)
+  
+    # traverse through all array elements 
+    for i in range(length):   
+        # traverse until second from last 
+        for j in range(0, length-1): 
+            # if the value is greater than right value
+            if arr[j] > arr[j+1]:
+                #save current value
+                temp = arr[j]
+                # switch current and right of current
+                arr[j] = arr[j+1]
+                arr[j+1] = temp
 
     return arr
 
@@ -41,6 +64,5 @@ What is the time and space complexity of the counting sort algorithm?
 '''
 def counting_sort(arr, maximum=None):
     # Your code here
-
 
     return arr
